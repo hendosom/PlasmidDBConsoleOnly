@@ -13,7 +13,9 @@ namespace PlasmidDBConsoleOnly
 {
     public partial class View : Form
     {
-        Plasmid plasmid = new Plasmid();
+        Plasmid plasmidToSave = new Plasmid();
+        Plasmid plasmidToLoad = new Plasmid();
+
         public string InputName { get; set; }
         public string InputSequence { get; set; }
 
@@ -24,23 +26,32 @@ namespace PlasmidDBConsoleOnly
 
         private void InputPlasmidName_TextChanged(object sender, EventArgs e)
         {
-            plasmid.Name = ((TextBox)sender).Text;
+            plasmidToSave.Name = ((TextBox)sender).Text;
         }
 
         private void InputPlasmidSequence_TextChanged(object sender, EventArgs e)
         {
-            plasmid.Sequence = ((TextBox)sender).Text;
+            plasmidToSave.Sequence = ((TextBox)sender).Text;
         }
 
         private void ButtonSaveToDB_Click(object sender, EventArgs e)
         {
-            if (Methods.FileExistence(plasmid.Filepath) == false)
+            if (Methods.FileExistence(plasmidToSave.Filepath) == false)
             {
-                LblShowInputName.Text = plasmid.Name;
-                LblShowInputSequence.Text = plasmid.Sequence;
-                Methods.AppendData(plasmid.Filepath, plasmid.Name, plasmid.Sequence);
+                LblShowInputName.Text = plasmidToSave.Name;
+                LblShowInputSequence.Text = plasmidToSave.Sequence;
 
-                if (Methods.FileExistence(plasmid.Filepath) == true)
+                if (Methods.CheckSequence(plasmidToSave.Sequence) == true)
+                {
+                    Methods.AppendData(plasmidToSave.Filepath, plasmidToSave.Name, plasmidToSave.Sequence);
+                }
+                else
+                {
+                    LblDisplayInfoText.Text = "Sequenz enthält ungültige Zeichen. (erlaubt: A, T, G, C, N)";
+                }
+                
+
+                if (Methods.FileExistence(plasmidToSave.Filepath) == true)
                 {
                     LblDisplayInfoText.Text = "Plasmid erfolgreich gespeichert!";
                 }
@@ -84,10 +95,14 @@ namespace PlasmidDBConsoleOnly
 
         private void InputLoadPlasmid_Click(object sender, EventArgs e)
         {
-            Plasmid plasmidToLoad = new Plasmid();
+            
             string[] a = Methods.LoadData(InputPlasmidNameToLoad.Text);
-            LblOutputPlasmidName.Text = a[0];
-            LblOutputPlasmidSequence.Text = a[1];
+
+            plasmidToLoad.Name = a[0];
+            plasmidToLoad.Sequence = a[1];
+
+            LblOutputPlasmidName.Text = plasmidToLoad.Name;
+            LblOutputPlasmidSequence.Text = plasmidToLoad.Sequence;
         }
 
         

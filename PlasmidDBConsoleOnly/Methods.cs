@@ -24,7 +24,7 @@ namespace PlasmidDBConsoleOnly
 
             if (File.Exists(filepath))
             {
-                b = File.ReadAllLines(filepath); //
+                b = File.ReadAllLines(filepath);
             }
 
             else
@@ -45,6 +45,42 @@ namespace PlasmidDBConsoleOnly
             }
 
             return result;
+        }
+
+        static public bool CheckSequence(string a)
+        {
+            bool r = true;
+            int count = 0;
+
+            foreach (char c in a.ToUpper())
+            {
+                switch (c.ToString())
+                {
+                    case "A":
+                    case "T":
+                    case "C":
+                    case "G":
+                    case "N":
+                        
+                        break;
+
+                    default:
+                        count++;
+                        break;
+                }
+            }
+
+            if (count > 0)
+            {
+                r = false;
+            }
+            else
+            {
+                r = true;
+            }
+
+            return r;
+            
         }
     }
 }
