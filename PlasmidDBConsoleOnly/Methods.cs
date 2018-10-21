@@ -24,7 +24,7 @@ namespace PlasmidDBConsoleOnly
 
             if (File.Exists(filepath))
             {
-                b = File.ReadAllLines(filepath);
+                b = File.ReadAllLines(filepath); //
             }
 
             else
