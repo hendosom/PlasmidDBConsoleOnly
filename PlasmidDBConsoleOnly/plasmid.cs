@@ -8,8 +8,14 @@ namespace PlasmidDBConsoleOnly
 {
     class Plasmid
     {
-        public string name { get; set; }
-        public string sequence { get; set; }
-        public string filepath { get; set; }
+        public string Name { get; set; }
+        public string Sequence { get; set; }
+        private string filepath;
+
+        public string Filepath
+        {
+            get { return filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{Name}.text"; }
+        }
+
     }
 }

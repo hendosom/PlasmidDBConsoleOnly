@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace PlasmidDBConsoleOnly
 {
@@ -11,28 +12,29 @@ namespace PlasmidDBConsoleOnly
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Plasmiddatenbank V1.0 Konsolenversion");
+            View view = new View();
+            Application.Run(view);
+            
+            
+            // Methods methods = new Methods();
 
-            Plasmid plasmid = new Plasmid();
+            // Console.WriteLine("Plasmiddatenbank V1.0 Konsolenversion");
+            // Console.WriteLine("Plasmidname eingeben: ");
+            // plasmid.Name = Console.ReadLine();
 
-            Console.WriteLine("Plasmidname eingeben: ");
-            plasmid.name = Console.ReadLine();
+            // plasmid.Filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{plasmid.Name}.text";
 
-            plasmid.filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{plasmid.name}.text";
-
-            Console.WriteLine("Plasmidsequenz eingeben: ");
-            plasmid.sequence = Console.ReadLine();
-
+            // Console.WriteLine("Plasmidsequenz eingeben: ");
+            // plasmid.Sequence = Console.ReadLine();
 
 
-            File.AppendAllText(plasmid.filepath, plasmid.name);
-            File.AppendAllText(plasmid.filepath, Environment.NewLine);
-            File.AppendAllText(plasmid.filepath, plasmid.sequence);
 
-            string[] plasmidData = File.ReadAllLines(plasmid.filepath);
+            
 
-            Console.WriteLine("Name: " + plasmidData[0] + ", Sequenz: " + plasmidData[1]);
-            Console.ReadLine();
+            // string[] plasmidData = File.ReadAllLines(plasmid.Filepath);
+
+            // Console.WriteLine("Name: " + plasmidData[0] + ", Sequenz: " + plasmidData[1]);
+            // Console.ReadLine();
         }
     }
 }
