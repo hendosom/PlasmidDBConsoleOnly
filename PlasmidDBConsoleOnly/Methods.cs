@@ -20,7 +20,7 @@ namespace PlasmidDBConsoleOnly
         static public string[] LoadData(string a)
         {
             string[] b = new string[2];
-            string filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{a}.text";
+            string filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{a}.cvs";
 
             if (File.Exists(filepath))
             {

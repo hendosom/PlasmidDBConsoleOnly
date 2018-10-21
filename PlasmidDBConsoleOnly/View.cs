@@ -31,7 +31,7 @@ namespace PlasmidDBConsoleOnly
 
         private void InputPlasmidSequence_TextChanged(object sender, EventArgs e)
         {
-            plasmidToSave.Sequence = ((TextBox)sender).Text;
+            plasmidToSave.Sequence = ((TextBox)sender).Text.ToUpper();
         }
 
         private void ButtonSaveToDB_Click(object sender, EventArgs e)

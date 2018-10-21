@@ -14,7 +14,7 @@ namespace PlasmidDBConsoleOnly
 
         public string Filepath
         {
-            get { return filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{Name}.text"; }
+            get { return filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{Name}.cvs"; }
         }
 
     }
