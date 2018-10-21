@@ -12,23 +12,26 @@ namespace PlasmidDBConsoleOnly
         static void Main(string[] args)
         {
             Console.WriteLine("Plasmiddatenbank V1.0 Konsolenversion");
-            Console.WriteLine("Plasmidname eingeben: ");
-            string plasmidName = Console.ReadLine();
 
-            string filePath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{plasmidName}.text";
+            Plasmid plasmid = new Plasmid();
+
+            Console.WriteLine("Plasmidname eingeben: ");
+            plasmid.name = Console.ReadLine();
+
+            plasmid.filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{plasmid.name}.text";
 
             Console.WriteLine("Plasmidsequenz eingeben: ");
-            string plasmidSequenz = Console.ReadLine();
+            plasmid.sequence = Console.ReadLine();
 
 
 
-            File.AppendAllText(filePath, plasmidName);
-            File.AppendAllText(filePath, Environment.NewLine);
-            File.AppendAllText(filePath, plasmidSequenz);
+            File.AppendAllText(plasmid.filepath, plasmid.name);
+            File.AppendAllText(plasmid.filepath, Environment.NewLine);
+            File.AppendAllText(plasmid.filepath, plasmid.sequence);
 
-            string[] plasmid = File.ReadAllLines(filePath);
+            string[] plasmidData = File.ReadAllLines(plasmid.filepath);
 
-            Console.WriteLine("Name: " + plasmid[0] + ", Sequenz: " + plasmid[1]);
+            Console.WriteLine("Name: " + plasmidData[0] + ", Sequenz: " + plasmidData[1]);
             Console.ReadLine();
         }
     }
