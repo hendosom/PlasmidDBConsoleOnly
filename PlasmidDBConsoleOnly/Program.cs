@@ -10,6 +10,14 @@ namespace PlasmidDBConsoleOnly
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Plasmiddatenbank V1.0 Konsolenversion");
+            Console.WriteLine("Plasmidname eingeben: ");
+            string plasmidName=Console.ReadLine();
+            Console.WriteLine("Plasmidsequenz eingeben: ");
+            string plasmidSequenz = Console.ReadLine();
+
+            Console.WriteLine(plasmidName + " " + plasmidSequenz);
+            Console.ReadLine();
         }
     }
 }
