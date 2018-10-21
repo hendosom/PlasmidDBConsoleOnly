@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PlasmidDBConsoleOnly
 {
     public partial class View : Form
@@ -33,9 +34,22 @@ namespace PlasmidDBConsoleOnly
 
         private void ButtonSaveToDB_Click(object sender, EventArgs e)
         {
-            LblShowInputName.Text = plasmid.Name;
-            LblShowInputSequence.Text = plasmid.Sequence;
-            Methods.AppendData(plasmid.Filepath, plasmid.Name, plasmid.Sequence);
+            if (Methods.FileExistence(plasmid.Filepath) == false)
+            {
+                LblShowInputName.Text = plasmid.Name;
+                LblShowInputSequence.Text = plasmid.Sequence;
+                Methods.AppendData(plasmid.Filepath, plasmid.Name, plasmid.Sequence);
+
+                if (Methods.FileExistence(plasmid.Filepath) == true)
+                {
+                    LblDisplayInfoText.Text = "Plasmid erfolgreich gespeichert!";
+                }
+            }
+            else
+            {
+                LblDisplayInfoText.Text = "Dieses Plasmid existiert bereits. Bitte wähle einen anderen Namen oder lösche die bestehende Datei.";
+            }
+            
         }
 
         private void LblShowInputName_TextChanged(object sender, EventArgs e)
@@ -47,5 +61,35 @@ namespace PlasmidDBConsoleOnly
         {
 
         }
+
+        private void View_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LblDisplayInfoText_TextChanged(object sender, EventArgs e)
+        {
+            LblDisplayInfoText.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InputPlasmidNameToLoad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InputLoadPlasmid_Click(object sender, EventArgs e)
+        {
+            Plasmid plasmidToLoad = new Plasmid();
+            string[] a = Methods.LoadData(InputPlasmidNameToLoad.Text);
+            LblOutputPlasmidName.Text = a[0];
+            LblOutputPlasmidSequence.Text = a[1];
+        }
+
+        
     }
 }

@@ -16,5 +16,35 @@ namespace PlasmidDBConsoleOnly
             File.AppendAllText(a, Environment.NewLine);
             File.AppendAllText(a, c);
         }
+
+        static public string[] LoadData(string a)
+        {
+            string[] b = new string[2];
+            string filepath = $"C:\\Users\\Hendrik\\Desktop\\Plasmiddatenbank\\plasmid_{a}.text";
+
+            if (File.Exists(filepath))
+            {
+                b = File.ReadAllLines(filepath);
+            }
+
+            else
+            {
+                b[0] = "File not found.";
+            }
+
+            return b;
+        }
+
+        static public bool FileExistence(string a)
+        {
+            bool result = false;
+
+            if (File.Exists(a))
+            {
+                result = true;
+            }
+
+            return result;
+        }
     }
 }
